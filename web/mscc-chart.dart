@@ -2,9 +2,10 @@ import 'dart:html';
 import 'dart:async';
 import 'dart:js';
 import 'package:polymer/polymer.dart';
+import 'package:polymer_expressions/filter.dart' show Transformer;
 
 import 'gauge.dart';
-
+import 'ui_filters.dart';
 
 @CustomTag('polymer-mscc-chart')
 class MsccChart extends PolymerElement {
@@ -43,4 +44,6 @@ class MsccChart extends PolymerElement {
       slider.onChange.listen((_) => gauge.value = sliderValue());
     });
   }
+
+  final Transformer asInteger = new IntToString();
 }

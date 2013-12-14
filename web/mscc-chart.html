@@ -1,14 +1,19 @@
-<!DOCTYPE html>
-
-<html>
-  <head>
-    <title>mscc-chart</title>
-  </head>
- 
-  <body>   
-    <p id="text"></p>
-    <script type="application/dart" src="mscc-chart.dart"></script>
-    <!-- for this next line to work, your pubspec.yaml file must have a dependency on 'browser' -->
-    <script src="packages/browser/dart.js"></script>
-  </body>
-</html>
+<polymer-element name="polymer-mscc-chart" attributes="type">
+  <template>
+    <style>
+      div {
+        font-size: 24pt;
+        text-align: center;
+        margin-top: 140px;
+      }
+      button {
+        font-size: 24pt;
+        margin-bottom: 20px;
+      }
+    </style>
+    <div>
+      <button on-click="{{increment}}">Click me</button><br>
+      <span>(click count: {{count}})</span>
+    </div>
+  </template>
+  <script type="application/dart" src="clickcounter.dart"></script>

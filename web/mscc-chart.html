@@ -1,19 +1,14 @@
 <polymer-element name="polymer-mscc-chart">
   <template>
-    <style>
-      div {
-        font-size: 24pt;
-        text-align: center;
-        margin-top: 140px;
-      }
-      button {
-        font-size: 24pt;
-        margin-bottom: 20px;
-      }
-    </style>
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <div id="polymer-mscc-chart" style="width: 400px; height: 400px;"></div>
+    <div id="gauge" style="width: 400px; height: 400px;"></div>
+    <form class="center">
+       <h2>Move the slider to change the value:</h2>
+       <input id="slider" style="width: 400px" type="range" max="{{max}}" value="{{value}}"/>
+    </form>
   </template>
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script type="text/javascript" src="packages/browser/dart.js"></script>
+  <script type="text/javascript" src="packages/browser/interop.js"></script>
   <script type="application/dart" src="mscc-chart.dart"></script>
 </polymer-element>
   

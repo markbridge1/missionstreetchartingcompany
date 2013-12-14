@@ -1,45 +1,46 @@
-import 'package:polymer/polymer.dart';
-import 'package:js/js.dart' as js;
-
 import 'dart:html';
 import 'dart:async';
 import 'dart:js';
+import 'package:polymer/polymer.dart';
 
-/**
- * A Polymer Chart Element.
- */
+import 'gauge.dart';
+
+
 @CustomTag('polymer-mscc-chart')
 class MsccChart extends PolymerElement {
+  DivElement visualization;
+  InputElement slider;
 
-  var jsOptions;
-  var jsTable;
-  var jsChart;
-  var data;
-  var vis;
-  
-  // Access to the value of the gauge.
-  num _value;
-  get value => _value;
-  set value(num x) {
-    _value = x;
-//    draw();
-  }
+  @published int min;
+  @published int max;
+  @published int yellowFrom;
+  @published int yellowTo;
+  @published int redFrom;
+  @published int redTo;
+  @published int minorTicks;
+  @published int value;
 
-  MsccChart.created() : super.created() {
-    print("in chart dart");
-//    jsChart = new JsObject(vis["Gauge"], [element]);
-//    jsOptions = new JsObject.jsify(options);
-//    draw();
+  MsccChart.created() : super.created();
 
-  }
-  
   void enteredView() {
     super.enteredView();
-    final data = [['Label', 'Value'], [title, value]];
-    final vis = context["google"]["visualization"];
-    jsTable = vis.callMethod('arrayToDataTable', [new JsObject.jsify(data)]);
-    shadowRoot.querySelector("#polymer-mscc-chart")
-      .setInnerHtml("<h4>hi!</h4>", validator: new NodeValidatorBuilder.common());
-  }
 
+    visualization = shadowRoot.querySelector('#gauge');
+    slider = shadowRoot.querySelector("#slider");
+
+    Gauge.load().then((_) {
+      int sliderValue() => int.parse(slider.value);
+
+      Gauge gauge = new Gauge(visualization, "Slider", sliderValue(), {
+        'min': min,
+        'max': max,
+        'yellowFrom': yellowFrom,
+        'yellowTo': yellowTo,
+        'redFrom': redFrom,
+        'redTo': redTo,
+        'minorTicks': minorTicks
+      });
+      slider.onChange.listen((_) => gauge.value = sliderValue());
+    });
+  }
 }

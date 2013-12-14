@@ -6,7 +6,6 @@
     <title>Sample app</title>
     <link rel="stylesheet" href="missionstreetchartingcompany.css">
     
-    <!-- import the click-counter -->
     <link rel="import" href="mscc-chart.html">
     <script type="application/dart">export 'package:polymer/init.dart';</script>
     <script src="packages/browser/dart.js"></script>
@@ -17,6 +16,15 @@
     <h3>The Mission Street Charting Company Presents</h3>
     <h2>polymer-mscc-chart</h2>
 
-    <polymer-mscc-chart></polymer-mscc-chart>
+    <polymer-mscc-chart
+      min="0"
+      max="280"
+      yellowFrom="200"
+      yellowTo="250"
+      redFrom="250"
+      redTo="280"
+      minorTicks="5"
+      value="70"
+     ></polymer-mscc-chart>
   </body>
 </html>

@@ -1,7 +1,8 @@
 name: missionstreetchartingcompany
 description: A sample Polymer application
 dependencies:
-    polymer: any
+  js: any
+  polymer: any
 transformers:
 - polymer:
     entry_points: web/missionstreetchartingcompany.html

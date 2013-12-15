@@ -1,11 +1,9 @@
-import 'dart:html';
-import 'dart:async';
-import 'dart:js';
-import 'package:polymer/polymer.dart';
+import 'dart:html' show DivElement, InputElement;
+import 'package:polymer/polymer.dart' show CustomTag, PolymerElement, published;
 import 'package:polymer_expressions/filter.dart' show Transformer;
 
-import 'gauge.dart';
-import 'ui_filters.dart';
+import 'gauge.dart' show Gauge;
+import 'ui_filters.dart' show IntToString;
 
 @CustomTag('polymer-mscc-chart')
 class MsccChart extends PolymerElement {

@@ -1,4 +1,4 @@
-import 'dart:html' show DivElement, InputElement;
+import 'dart:html' show DivElement, InputElement, window;
 import 'package:polymer/polymer.dart' show CustomTag, PolymerElement, published;
 import 'package:polymer_expressions/filter.dart' show Transformer;
 
@@ -27,6 +27,9 @@ class MsccChart extends PolymerElement {
     visualization = shadowRoot.querySelector('#gauge');
     slider = shadowRoot.querySelector("#slider");
 
+    window.onResize.listen(resize);
+    resize(null);
+
     Gauge.load().then((_) {
       int sliderValue() => int.parse(slider.value);
 
@@ -41,6 +44,10 @@ class MsccChart extends PolymerElement {
       });
       slider.onChange.listen((_) => gauge.value = sliderValue());
     });
+  }
+
+  void resize(e) {
+    visualization.style.height = '${slider.clientWidth}px';
   }
 
   final Transformer asInteger = new IntToString();

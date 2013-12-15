@@ -2,11 +2,16 @@
   :scope {
     display: block;
     text-align: center;
-}
+  }
 }
 #gauge {
+  height: 300px;
   width: 100%;
 }
 #slider {
   width: 100%;
+}
+h2 {
+  margin: 0;
+  padding: 10px;
 }

@@ -1,10 +1,12 @@
 <polymer-element name="polymer-mscc-chart">
-  <template resize="{{resize}}">
+  <template>
     <link href="mscc-chart.css" rel="stylesheet">
     
     <div id="gauge"></div>
-    <h2>Move the slider to change the value:</h2>
-    <input id="slider" type="range" max="{{max}}" value="{{ value | asString }}"/>
+    <div id="slider-container">
+      <h2>Move the slider to change the value:</h2>
+      <input id="slider" type="range" max="{{max}}" value="{{ value | asString }}"/>
+    </div>
   </template>
   <script type="text/javascript" src="https://www.google.com/jsapi"></script>
   <script type="application/dart" src="mscc-chart.dart"></script>
